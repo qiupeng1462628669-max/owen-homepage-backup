@@ -1,7 +1,7 @@
 name: Sync from Website
 
 on:
-  workflow_dispatch:  # 允許從外部手動觸發
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -9,16 +9,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get latest data from Firebase
+      - name: Save data from website
         run: |
-          # 這裡我們會從你的前端傳資料過來
           echo '${{ github.event.inputs.site_content }}' > site-content.json
           echo '${{ github.event.inputs.blog_posts }}' > blog-posts.json
 
       - name: Commit and Push
         run: |
-          git config user.name "Owen Auto Sync"
-          git config user.email "owen@example.com"
+          git config user.name "Owen Auto Backup"
+          git config user.email "qiupeng1462628669@gmail.com"
+          
           git add site-content.json blog-posts.json
-          git commit -m "Auto sync from website - $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
-          git push
+          
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto sync from website - $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          fi
