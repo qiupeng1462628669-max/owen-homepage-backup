@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [sync-from-website]
 
+# 關鍵：明確給予寫入權限
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -11,11 +15,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true   # 重要：保留憑證
 
-      - name: Save data from website
-        run: |
-          echo '${{ github.event.client_payload.site_content }}' > site-content.json
-          echo '${{ github.event.client_payload.blog_posts }}' > blog-posts.json
+      - name: Save site-content.json
+        run: echo '${{ github.event.client_payload.site_content }}' > site-content.json
+
+      - name: Save blog-posts.json
+        run: echo '${{ github.event.client_payload.blog_posts }}' > blog-posts.json
 
       - name: Commit and Push
         run: |
