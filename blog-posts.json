@@ -2,36 +2,19 @@
   {
     "id": "T5IaT9ScSz3A8AoY8zvx",
     "content": "1",
-    "authorName": "Owen",
     "createdAt": {
       "seconds": 1777882348,
       "nanoseconds": 628000000
     },
-    "visible": true,
+    "authorName": "Owen",
     "title": "1",
+    "visible": true,
     "images": [],
+    "author": "qiupeng1462628669@gmail.com",
     "updatedAt": {
       "seconds": 1777882348,
       "nanoseconds": 628000000
     },
-    "author": "qiupeng1462628669@gmail.com",
-    "comments": [
-      {
-        "text": "123",
-        "authorName": "Owen",
-        "createdAt": "2026-05-04T08:14:40.382Z",
-        "authorEmail": "qiupeng1462628669@gmail.com",
-        "parentId": null,
-        "replies": []
-      },
-      {
-        "text": "123",
-        "createdAt": "2026-05-04T08:14:44.682Z",
-        "authorEmail": "qiupeng1462628669@gmail.com",
-        "authorName": "Owen",
-        "replies": [],
-        "parentId": null
-      }
-    ]
+    "comments": []
   }
 ]
